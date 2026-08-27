@@ -1,0 +1,121 @@
+/* ================= ABOUT ================= */
+.about {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+}
+
+/* ================= HEADING ================= */
+
+.about-heading {
+    padding-top: 0.5rem;
+}
+
+.section-label {
+    margin-bottom: 1.2rem;
+
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.about-heading h2 {
+    color: var(--text);
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+/* ================= CONTENT ================= */
+
+.about-content {
+    max-width: 650px;
+}
+
+.about-content p {
+    margin-bottom: 1.3rem;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* ================= HIGHLIGHTS ================= */
+
+.about-highlights {
+    margin-top: 2.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid var(--border);
+}
+
+.highlight {
+    padding: 1.5rem 1rem 0 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.highlight-number {
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.highlight-text {
+    color: var(--text);
+
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-heading h2 {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .about {
+        padding: 100px 6%;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .highlight {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+}
