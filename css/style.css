@@ -1,49 +1,144 @@
-* {
+/* ===============================================
+   DESIGN SYSTEM — BASE STYLES
+   =============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    /* Background */
-    --bg: #050D1A;
-    --surface: #071B2E;
+    /* Backgrounds */
+    --bg:          #060b14;
+    --bg-alt:      #080f1c;
+    --surface:     #0d1727;
+    --surface-2:   #111e30;
 
     /* Text */
-    --text: #FFFFFF;
-    --text-secondary: #AAB4C3;
+    --text:        #f0f4ff;
+    --text-sub:    #8a9ab5;
+    --text-muted:  #4e5f77;
 
-    /* Accent */
-    --accent: #00B7FF;
-    --accent-hover: #0095D9;
+    /* Accent gradient */
+    --accent:      #4f9eff;
+    --accent-2:    #9b6dff;
+    --glow:        rgba(79, 158, 255, 0.18);
+
+    /* Gradient strings */
+    --grad:        linear-gradient(135deg, #4f9eff 0%, #9b6dff 100%);
+    --grad-text:   linear-gradient(135deg, #6db8ff 0%, #b27fff 100%);
 
     /* Borders */
-    --border: rgba(0, 183, 255, 0.15);
+    --border:      rgba(79, 158, 255, 0.12);
+    --border-h:    rgba(79, 158, 255, 0.35);
+
+    /* Radius / shadow */
+    --radius:      12px;
+    --radius-lg:   20px;
+    --shadow:      0 20px 60px rgba(0, 0, 0, 0.45);
+    --shadow-glow: 0 0 40px rgba(79, 158, 255, 0.12);
+
+    /* Spacing */
+    --section-pad: 130px 8%;
+    --max-w:       1200px;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+html { scroll-behavior: smooth; }
 
 body {
-    font-family: "Inter", sans-serif;
-
+    font-family: "Inter", "Outfit", sans-serif;
     background: var(--bg);
     color: var(--text);
-
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Global noise grain overlay ── */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
 }
 
 section {
     min-height: 100vh;
-    padding: 120px 8%;
+    padding: var(--section-pad);
+    position: relative;
 }
 
-img {
-    max-width: 100%;
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Gradient text utility ── */
+.grad-text {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Section label ── */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.4rem;
+    color: var(--accent);
+    font-family: "Outfit", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.section-label::before {
+    content: "";
     display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.7;
 }
 
-a {
-    color: inherit;
+/* ── Scroll-reveal animation ── */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
