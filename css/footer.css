@@ -1,40 +1,30 @@
 /* ===============================================
-   FOOTER
+   FOOTER (Minimal)
    =============================================== */
 
 .footer {
     background: var(--bg-alt);
-    padding: -2rem;
+    padding: 2.5rem 8%;
     border-top: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
 }
-
-
-
 
 .footer-bottom {
     max-width: var(--max-w);
-    margin: 2.5rem auto 0;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .footer-bottom p {
     color: var(--text-muted);
-    font-size: 0.72rem;
-    letter-spacing: 0.3px;
+    font-size: 0.78rem;
 }
 
 /* ── Responsive ── */
-
-@media (max-width: 700px) {
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.4rem;
-    }
-
-    .footer-links { gap: 1.2rem; }
+@media (max-width: 600px) {
+    .footer { padding: 2rem 6%; }
+    .footer-bottom { justify-content: center; text-align: center; }
 }
