@@ -1,89 +1,215 @@
 /* ===============================================
-   HERO (Minimal)
+   HERO SECTION — Premium & Attractive Design
    =============================================== */
 
 .hero {
     min-height: 100vh;
-    padding: 0 8%;
-
+    padding: 110px 8% 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
-
+    justify-content: center;
     background: var(--bg);
     position: relative;
     overflow: hidden;
 }
 
-/* ── Subtle divider line at bottom ── */
-.hero::after {
-    content: "";
+/* ── Ambient Background Glows ── */
+.hero-glow {
     position: absolute;
-    bottom: 0;
-    left: 8%;
-    right: 8%;
-    height: 1px;
-    background: var(--border);
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.65;
 }
 
-/* ── Content ── */
-.hero-content {
-    flex: 1;
-    max-width: 600px;
+.hero-glow-1 {
+    width: 380px;
+    height: 380px;
+    top: 10%;
+    left: -5%;
+    background: radial-gradient(circle, rgba(44, 110, 73, 0.12) 0%, transparent 70%);
+}
+
+.hero-glow-2 {
+    width: 450px;
+    height: 450px;
+    bottom: 5%;
+    right: -5%;
+    background: radial-gradient(circle, rgba(79, 158, 255, 0.08) 0%, transparent 70%);
+}
+
+/* ── Hero Container ── */
+.hero-container {
+    width: 100%;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4.5rem;
     position: relative;
     z-index: 1;
 }
 
+/* ── Left Content Column ── */
+.hero-content {
+    flex: 1.15;
+    max-width: 600px;
+}
+
+/* Status Pill */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.95rem;
+    background: rgba(44, 110, 73, 0.07);
+    border: 1px solid rgba(44, 110, 73, 0.22);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.3px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(6px);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(44, 110, 73, 0.5);
+    animation: statusPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes statusPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(44, 110, 73, 0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(44, 110, 73, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(44, 110, 73, 0); }
+}
+
+/* Greeting */
 .hero-greeting {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 1.2rem;
     color: var(--text-muted);
     font-family: "Inter", sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
+    font-size: 0.82rem;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
 }
 
 .hero-greeting::before {
     content: "";
     display: block;
-    width: 20px;
-    height: 1px;
-    background: var(--text-muted);
+    width: 24px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
 }
 
-.hero h1 {
+/* Title & Accent */
+.hero-title {
     font-family: "Playfair Display", serif;
-    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -1px;
     color: var(--text);
     margin-bottom: 0.8rem;
 }
 
-.hero h2 {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 400;
-    color: var(--text-sub);
-    margin-bottom: 1.8rem;
-    letter-spacing: 0.2px;
+.hero-name-accent {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
 }
 
+.hero-name-accent::after {
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(44, 110, 73, 0.18);
+    z-index: -1;
+    border-radius: 3px;
+}
+
+/* Roles */
+.hero-roles {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-sub);
+    margin-bottom: 1.4rem;
+}
+
+.role-highlight {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.role-separator {
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+/* Description */
 .hero-description {
-    max-width: 480px;
-    margin-bottom: 2.8rem;
     color: var(--text-sub);
     font-size: 0.95rem;
     line-height: 1.8;
+    margin-bottom: 1.6rem;
+    max-width: 520px;
 }
 
-/* ── Buttons ── */
+.hero-description strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Quick Tech Pills */
+.hero-tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.2rem;
+}
+
+.tech-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.tech-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Actions: Buttons & Socials */
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
 .hero-buttons {
     display: flex;
     align-items: center;
@@ -94,151 +220,336 @@
 .primary-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.8rem 1.8rem;
+    gap: 0.5rem;
+    padding: 0.85rem 1.9rem;
     background: var(--text);
-    color: var(--bg);
+    color: #ffffff;
     font-family: "Inter", sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 500;
     border-radius: var(--radius);
     text-decoration: none;
     border: 1px solid var(--text);
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.primary-btn .btn-arrow {
+    transition: transform 0.2s ease;
 }
 
 .primary-btn:hover {
     background: var(--accent);
     border-color: var(--accent);
-    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 110, 73, 0.3);
+}
+
+.primary-btn:hover .btn-arrow {
+    transform: translate(3px, -3px);
 }
 
 .secondary-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.8rem 1.8rem;
-    background: transparent;
+    padding: 0.85rem 1.8rem;
+    background: var(--surface);
     color: var(--text);
     font-family: "Inter", sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 500;
     border-radius: var(--radius);
     text-decoration: none;
     border: 1px solid var(--border);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .secondary-btn:hover {
     border-color: var(--text);
+    background: var(--bg-alt);
+    transform: translateY(-2px);
 }
 
-/* ── Social strip ── */
+.cv-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 1.2rem;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: var(--radius);
+    border: 1px dashed var(--border);
+    background: transparent;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cv-link-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(44, 110, 73, 0.04);
+}
+
+/* Social Strip */
 .hero-socials {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-top: 2.8rem;
+    gap: 0.8rem;
 }
 
 .hero-social-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 50%;
+    background: var(--surface);
     color: var(--text-sub);
-    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .hero-social-link:hover {
-    border-color: var(--text);
-    color: var(--text);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ── Profile image ── */
-.hero-image {
-    flex: 0 0 310px;
+/* ── Right Profile Image Presentation ── */
+.hero-image-wrapper {
+    flex: 0 0 340px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.hero-image-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(44, 110, 73, 0.15) 0%, rgba(79, 158, 255, 0.1) 100%);
+    transform: rotate(-3deg) scale(1.02);
+    z-index: 0;
+    transition: transform 0.4s ease;
+}
+
+.hero-image-wrapper:hover .hero-image-backdrop {
+    transform: rotate(0deg) scale(1.04);
+}
+
+.hero-image-card {
     position: relative;
     z-index: 1;
+    width: 320px;
+    height: 410px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
 
-.hero-image img {
-    width: 290px;
-    height: 370px;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    transition: transform 0.4s ease;
-    filter: grayscale(15%);
-}
-
-.hero-image img:hover {
+.hero-image-card:hover {
     transform: translateY(-4px);
-    filter: grayscale(0%);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.14);
 }
 
-/* ── Scroll indicator ── */
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.hero-image-card:hover .hero-img {
+    transform: scale(1.03);
+}
+
+/* Floating Achievement Badges */
+.floating-badge {
+    position: absolute;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: floatAnim 4s ease-in-out infinite;
+}
+
+.badge-top-left {
+    top: 25px;
+    left: -35px;
+    animation-delay: 0s;
+}
+
+.badge-bottom-right {
+    bottom: 25px;
+    right: -25px;
+    animation-delay: 2s;
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-7px); }
+}
+
+.badge-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(44, 110, 73, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.badge-text-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.badge-sub {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ── Scroll Indicator ── */
 .hero-scroll {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1.8rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     z-index: 1;
     color: var(--text-muted);
-    font-size: 0.62rem;
-    letter-spacing: 2px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
 }
 
 .hero-scroll-line {
-    width: 1px;
-    height: 36px;
-    background: linear-gradient(to bottom, var(--text-muted), transparent);
-    animation: scrollLine 1.8s ease-in-out infinite;
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    border-radius: 2px;
+    animation: scrollLine 2s ease-in-out infinite;
 }
 
 @keyframes scrollLine {
     0%   { opacity: 1; transform: scaleY(1) translateY(0); }
-    100% { opacity: 0; transform: scaleY(0.4) translateY(12px); }
+    100% { opacity: 0; transform: scaleY(0.3) translateY(14px); }
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
     .hero {
+        padding: 120px 6% 60px;
+    }
+
+    .hero-container {
         flex-direction: column-reverse;
-        justify-content: center;
         text-align: center;
-        padding: 120px 6% 80px;
-        gap: 3rem;
+        gap: 3.5rem;
     }
 
     .hero-content {
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .hero-greeting::before { display: none; }
-    .hero-image { flex: none; }
-    .hero-image img { width: 240px; height: 300px; }
-    .hero-scroll { display: none; }
-    .hero::after { display: none; }
+    .hero-greeting::before {
+        display: none;
+    }
+
+    .hero-roles {
+        justify-content: center;
+    }
+
+    .hero-tech-pills {
+        justify-content: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-socials {
+        justify-content: center;
+    }
+
+    .hero-image-wrapper {
+        flex: none;
+    }
+
+    .badge-top-left {
+        left: -15px;
+    }
+
+    .badge-bottom-right {
+        right: -15px;
+    }
+
+    .hero-scroll {
+        display: none;
+    }
 }
 
 @media (max-width: 550px) {
-    .hero { padding: 110px 5% 60px; }
-    .hero-buttons { flex-direction: column; width: 100%; }
-    .primary-btn, .secondary-btn { width: 100%; max-width: 280px; justify-content: center; }
-    .hero-image img { width: 200px; height: 255px; }
+    .hero {
+        padding: 100px 5% 50px;
+    }
+
+    .hero-image-card {
+        width: 260px;
+        height: 340px;
+    }
+
+    .badge-top-left, .badge-bottom-right {
+        position: static;
+        margin: 0.5rem 0;
+        animation: none;
+    }
+
+    .hero-image-wrapper {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary-btn, .secondary-btn, .cv-link-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
 }

@@ -1,5 +1,5 @@
 /* ===============================================
-   CONTACT (Minimal)
+   CONTACT
    =============================================== */
 
 .contact {
@@ -69,30 +69,50 @@
     50%       { opacity: 0.4; }
 }
 
-/* ── Contact items — horizontal row ── */
+/* ── Contact cards — separate boxes ── */
 .contact-details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
+    gap: 1.2rem;
 }
 
 .contact-item {
-    padding: 1.8rem;
+    padding: 2rem 1.8rem;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 1.2rem;
     text-decoration: none;
     background: var(--surface);
-    transition: background 0.2s ease;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .contact-item:hover {
     background: var(--bg-alt);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon circle */
+.contact-item-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.contact-item:hover .contact-item-icon {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .contact-item-info {

@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jenisha Lama — Software Developer specializing in Java, Spring Boot, React, and MySQL. Explore my projects and get in touch.">
+    <meta name="description"
+        content="Jenisha Lama — Software Developer specializing in Java, Spring Boot, React, and MySQL. Explore my projects and get in touch.">
     <title>Jenisha Lama | Software Developer</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/experience.css">
     <link rel="stylesheet" href="css/skills.css">
     <link rel="stylesheet" href="css/projects.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
+
 <body>
 
     <!-- ================= NAVBAR ================= -->
     <header>
         <nav class="navbar" id="navbar">
             <div class="logo">
-                <a href="#">Jenisha.</a>
+                <a href="#">Jenisha</a>
             </div>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="active"></a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -49,44 +55,102 @@
 
     <!-- Mobile nav overlay -->
     <div class="nav-overlay" id="nav-overlay"></div>
+
     <!-- ================= HERO ================= -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <p class="hero-greeting">Hello, I'm</p>
+        <!-- Ambient Decorative Glows -->
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
 
-            <h1>Jenisha<br>Lama</h1>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="status-dot"></span>
+                    <span>Available for new opportunities</span>
+                </div>
 
-            <h2>Software Developer</h2>
+                <p class="hero-greeting reveal" style="transition-delay: 0.05s">Hello, I'm</p>
 
-            <p class="hero-description">
-                Passionate about building modern, user-focused web applications —
-                crafting reliable backends and clean interfaces that make a difference.
-            </p>
+                <h1 class="hero-title reveal" style="transition-delay: 0.1s">
+                    Jenisha <span class="hero-name-accent">Lama</span>
+                </h1>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="primary-btn">View Projects ↗</a>
-                <a href="#contact" class="secondary-btn">Get In Touch</a>
+                <div class="hero-roles reveal" style="transition-delay: 0.15s">
+                    <span class="role-highlight">Software Developer</span>
+                    <span class="role-separator">•</span>
+                    <span>Backend &amp; Web Architect</span>
+                </div>
+
+                <p class="hero-description reveal" style="transition-delay: 0.2s">
+                    Passionate about building scalable, high-performance web applications —
+                    crafting robust backends with <strong>Java &amp; Spring Boot</strong> and clean, intuitive interfaces with <strong>React</strong>.
+                </p>
+
+                <!-- Quick Tech Pills -->
+                <div class="hero-tech-pills reveal" style="transition-delay: 0.25s">
+                    <span class="tech-pill">Java</span>
+                    <span class="tech-pill">Spring Boot</span>
+                    <span class="tech-pill">React</span>
+                    <span class="tech-pill">MySQL</span>
+                    <span class="tech-pill">REST APIs</span>
+                </div>
+
+                <div class="hero-actions reveal" style="transition-delay: 0.3s">
+                    <div class="hero-buttons">
+                        <a href="#projects" class="primary-btn">
+                            <span>View Projects</span>
+                            <span class="btn-arrow">↗</span>
+                        </a>
+                        <a href="#contact" class="secondary-btn">Get In Touch</a>
+                        <a href="#" class="cv-link-btn" title="Download Resume">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span>Resume</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-socials">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub" title="GitHub">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.491.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.165 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn" title="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="mailto:your.email@gmail.com" class="hero-social-link" aria-label="Email" title="Email">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="hero-socials">
-                <a href="#" class="hero-social-link" aria-label="GitHub" title="GitHub">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.491.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.165 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                </a>
-                <a href="#" class="hero-social-link" aria-label="LinkedIn" title="LinkedIn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <a href="mailto:your.email@gmail.com" class="hero-social-link" aria-label="Email" title="Email">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </a>
-            </div>
-        </div>
+            <!-- Profile Presentation with Floating Badges -->
+            <div class="hero-image-wrapper reveal" style="transition-delay: 0.15s">
+                <div class="hero-image-backdrop"></div>
+                <div class="hero-image-card">
+                    <img src="assets/images/profile.jpg" alt="Jenisha Lama — Software Developer" class="hero-img">
+                </div>
 
-        <div class="hero-image">
-            <img src="assets/images/profile.jpg" alt="Jenisha Lama — Software Developer">
+                <!-- Floating Achievement 1 -->
+                <div class="floating-badge badge-top-left">
+                    <div class="badge-icon-box">⚡</div>
+                    <div class="badge-text-box">
+                        <span class="badge-title">Full-Stack Dev</span>
+                        <span class="badge-sub">Java • Spring • React</span>
+                    </div>
+                </div>
+
+                <!-- Floating Achievement 2 -->
+                <div class="floating-badge badge-bottom-right">
+                    <div class="badge-icon-box">🚀</div>
+                    <div class="badge-text-box">
+                        <span class="badge-title">Clean Code</span>
+                        <span class="badge-sub">Scalable Architecture</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="hero-scroll">
-            <span>scroll</span>
+            <span>EXPLORE</span>
             <div class="hero-scroll-line"></div>
         </div>
     </section>
@@ -143,6 +207,83 @@
         </div>
     </section>
 
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" class="experience">
+        <div class="experience-container">
+
+            <!-- Heading -->
+            <div class="experience-heading reveal">
+                <p class="section-label">Experience &amp; Journey</p>
+                <h2>Where I've worked &amp; contributed.</h2>
+                <p class="experience-intro">
+                    A timeline of my practical experience, professional growth, and key contributions in software development.
+                </p>
+            </div>
+
+            <!-- Experience List -->
+            <div class="experience-list">
+
+                <!-- Experience Item 01 -->
+                <div class="experience-card reveal" style="transition-delay: 0s">
+                    <div class="exp-meta">
+                        <span class="exp-period">2024 — Present</span>
+                        <span class="exp-badge">Full-time / Project</span>
+                        <h4 class="exp-company">Software Development</h4>
+                        <span class="exp-location">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Software Developer</h3>
+                        <p class="exp-desc">
+                            Designing and building robust backend services, RESTful APIs, and full-stack web applications using Java, Spring Boot, and React.
+                        </p>
+                        <ul class="exp-highlights">
+                            <li>Developed full-stack web solutions focusing on secure database design, authentication, and payment gateway integration.</li>
+                            <li>Implemented performant REST APIs and relational database architecture with MySQL and JPA/Hibernate.</li>
+                            <li>Collaborated on building responsive, user-friendly UI components with React.</li>
+                        </ul>
+                        <div class="exp-tech">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>React</span>
+                            <span>MySQL</span>
+                            <span>REST APIs</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 02 -->
+                <div class="experience-card reveal" style="transition-delay: 0.1s">
+                    <div class="exp-meta">
+                        <span class="exp-period">2023 — 2024</span>
+                        <span class="exp-badge">Academic &amp; Hackathons</span>
+                        <h4 class="exp-company">Project Development &amp; Innovation</h4>
+                        <span class="exp-location">Kathmandu, Nepal</span>
+                    </div>
+                    <div class="exp-content">
+                        <h3 class="exp-role">Full-Stack Project Developer</h3>
+                        <p class="exp-desc">
+                            Built end-to-end practical applications, collaborated in fast-paced hackathons, and engineered scalable software solutions.
+                        </p>
+                        <ul class="exp-highlights">
+                            <li>Created WanderPass Nepal for cultural tourism ticketing and access convenience.</li>
+                            <li>Engineered SweetBloom &amp; KritimBook booking platforms from ground up with automated workflows.</li>
+                            <li>Practiced agile development methodologies, version control with Git, and comprehensive API testing with Postman.</li>
+                        </ul>
+                        <div class="exp-tech">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>JavaScript</span>
+                            <span>MySQL</span>
+                            <span>Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 
     <!-- ================= SKILLS ================= -->
     <section id="skills" class="skills">
@@ -152,16 +293,9 @@
                 <p class="section-label">My Skills</p>
 
                 <h2>
-                    Technologies I work<br>
-                    with.
+                    Technologies I work with
                 </h2>
-
-                <p class="skills-intro">
-                    A growing toolkit built through projects, practice,
-                    and continuous learning.
-                </p>
             </div>
-
 
             <div class="skills-grid">
 
@@ -218,7 +352,6 @@
         </div>
     </section>
 
-
     <!-- ================= PROJECTS ================= -->
     <section id="projects" class="projects">
         <div class="projects-container">
@@ -226,7 +359,7 @@
             <div class="projects-heading reveal">
                 <div class="projects-heading-text">
                     <p class="section-label">My Work</p>
-                    <h2>Projects I've worked on.</h2>
+                    <h2>Projects I've worked on:</h2>
                     <p class="projects-intro">
                         A selection of projects that reflect my experience,
                         technical skills, and interest in building practical solutions.
@@ -355,14 +488,18 @@
                     <h2>Let's build something<br>meaningful.</h2>
                     <p>I'm always open to discussing new opportunities,
                     interesting projects, and ways we can work together.</p>
-                    <span class="availability-badge">Available for opportunities</span>
-                </div>
             </div>
 
-            <!-- Contact cards below -->
+            <!-- Contact cards — separate box style -->
             <div class="contact-details reveal">
 
                 <a href="mailto:your.email@gmail.com" class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                    </div>
                     <div class="contact-item-info">
                         <span class="contact-label">Email</span>
                         <span class="contact-value">your.email@gmail.com</span>
@@ -371,6 +508,11 @@
                 </a>
 
                 <a href="#" class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.491.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.341-3.369-1.341-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.165 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                    </div>
                     <div class="contact-item-info">
                         <span class="contact-label">GitHub</span>
                         <span class="contact-value">github.com/yourusername</span>
@@ -379,6 +521,11 @@
                 </a>
 
                 <a href="#" class="contact-item">
+                    <div class="contact-item-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
                     <div class="contact-item-info">
                         <span class="contact-label">LinkedIn</span>
                         <span class="contact-value">linkedin.com/in/yourusername</span>
@@ -393,17 +540,15 @@
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
-
         <div class="footer-bottom">
             <p>© 2026 Jenisha Lama. All rights reserved.</p>
         </div>
-
     </footer>
-
 
     <!-- JS -->
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
 
 </body>
+
 </html>
