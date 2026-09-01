@@ -23,7 +23,7 @@
 
 .about-heading h2 {
     font-family: "Playfair Display", Georgia, serif;
-    color: var(--text);
+    color: var(--text-title);
     font-size: clamp(2.2rem, 3.8vw, 3.2rem);
     font-weight: 700;
     line-height: 1.15;
@@ -41,7 +41,7 @@
 
 .about-text p {
     margin-bottom: 1.4rem;
-    color: var(--text-sub);
+    color: var(--text);
     font-size: 1rem;
     line-height: 1.85;
 }
@@ -52,23 +52,24 @@
     gap: 0.5rem;
     margin-top: 1rem;
     padding: 0.8rem 1.6rem;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-bg);
     border-radius: var(--radius);
     font-family: "Inter", sans-serif;
     font-size: 0.86rem;
     font-weight: 600;
     text-decoration: none;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 4px 16px rgba(59, 36, 52, 0.2);
     transition: all 0.25s ease;
 }
 
 .about-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    background: var(--btn-hover);
+    border-color: var(--btn-hover);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 8px 20px rgba(138, 89, 107, 0.3);
 }
 
 /* ── Highlights Column (Modern Cards) ── */
@@ -108,7 +109,7 @@
 }
 
 .highlight-text {
-    color: var(--text);
+    color: var(--text-title);
     font-size: 0.95rem;
     font-weight: 600;
     line-height: 1.4;

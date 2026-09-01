@@ -7,38 +7,44 @@
 }
 
 :root {
-    /* ── Elegant & Rich Color Palette ── */
-    --bg:             #f8fafc;
-    --bg-alt:         #f1f5f9;
-    --bg-subtle:      #e2e8f0;
-    --surface:        #ffffff;
-    --surface-hover:  #ffffff;
+    /* ── User Defined Color Palette ── */
+    --bg:             #FAF7F5; /* Warm Ivory (Main background) */
+    --bg-alt:         #F3E8E8; /* Soft Rose (Navbar / sections) */
+    --bg-subtle:      #EAE0E1;
+    --surface:        #FFFFFF; /* Cards */
+    --surface-hover:  #FFFFFF;
 
-    /* ── Typography Colors (Deep Slate) ── */
-    --text:           #0f172a;
-    --text-sub:       #475569;
-    --text-muted:     #94a3b8;
+    /* ── Typography Colors ── */
+    --text-title:     #3B2434; /* Deep Plum (Primary content/title) */
+    --text:           #332F32; /* Charcoal (Normal text) */
+    --text-sub:       #756C70; /* Muted Gray (Secondary text) */
+    --text-muted:     #968C91;
 
-    /* ── Vibrant & Elegant Accents ── */
-    --accent:         #0f766e;
-    --accent-hover:   #0d9488;
-    --accent-vibrant: #14b8a6;
-    --accent-light:   rgba(15, 118, 110, 0.08);
-    --accent-glow:    rgba(20, 184, 166, 0.25);
+    /* ── Accents & Buttons ── */
+    --accent:         #9A6A7A; /* Dusty Mauve (Main accent) */
+    --accent-hover:   #8A596B; /* Mauve (Button hover) */
+    --accent-vibrant: #C58C9B; /* Muted Rose (Secondary accent) */
+    --accent-light:   rgba(154, 106, 122, 0.10);
+    --accent-glow:    rgba(154, 106, 122, 0.25);
     
-    --secondary-accent: #3b82f6;
-    --secondary-light:  rgba(59, 130, 246, 0.08);
+    --secondary-accent: #C58C9B; /* Muted Rose */
+    --secondary-light:  rgba(197, 140, 155, 0.12);
+
+    /* ── Buttons ── */
+    --btn-bg:         #3B2434; /* Deep Plum */
+    --btn-hover:      #8A596B; /* Mauve */
+    --btn-text:       #FFFFFF;
 
     /* ── Gradients ── */
-    --grad-primary:   linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #2563eb 100%);
-    --grad-accent:    linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
-    --grad-surface:   linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    --grad-text:      linear-gradient(135deg, #0f172a 20%, #0f766e 100%);
+    --grad-primary:   linear-gradient(135deg, #3B2434 0%, #9A6A7A 50%, #C58C9B 100%);
+    --grad-accent:    linear-gradient(135deg, #9A6A7A 0%, #C58C9B 100%);
+    --grad-surface:   linear-gradient(180deg, #FFFFFF 0%, #FAF7F5 100%);
+    --grad-text:      linear-gradient(135deg, #3B2434 20%, #9A6A7A 100%);
 
     /* ── Borders ── */
-    --border:         #e2e8f0;
-    --border-h:       #cbd5e1;
-    --border-focus:   #0d9488;
+    --border:         #E4D9DA; /* Soft Taupe */
+    --border-h:       #C58C9B; /* Hover border */
+    --border-focus:   #9A6A7A;
 
     /* ── Radius & Shadows ── */
     --radius-sm:      6px;
@@ -46,10 +52,10 @@
     --radius-lg:      16px;
     --radius-xl:      24px;
 
-    --shadow-sm:      0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-    --shadow:         0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-    --shadow-h:       0 20px 35px -4px rgba(15, 23, 42, 0.09), 0 10px 15px -3px rgba(15, 23, 42, 0.04);
-    --shadow-glow:    0 8px 30px rgba(15, 118, 110, 0.16);
+    --shadow-sm:      0 1px 3px rgba(59, 36, 52, 0.04), 0 1px 2px rgba(59, 36, 52, 0.02);
+    --shadow:         0 4px 20px -2px rgba(59, 36, 52, 0.06), 0 2px 6px -1px rgba(59, 36, 52, 0.03);
+    --shadow-h:       0 20px 35px -4px rgba(59, 36, 52, 0.09), 0 10px 15px -3px rgba(59, 36, 52, 0.04);
+    --shadow-glow:    0 8px 30px rgba(154, 106, 122, 0.20);
 
     /* ── Spacing ── */
     --section-pad:    110px 8%;
@@ -64,7 +70,7 @@
     background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: var(--border);
     border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -123,10 +129,14 @@ a {
     border-radius: 2px;
 }
 
-/* ── Section Header General Style ── */
+/* ── Heading Styles ── */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-title);
+}
+
 h2 {
     font-family: "Playfair Display", Georgia, serif;
-    color: var(--text);
+    color: var(--text-title);
     letter-spacing: -0.5px;
 }
 

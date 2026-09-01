@@ -25,7 +25,7 @@
     font-family: "Playfair Display", Georgia, serif;
     margin-top: 0.4rem;
     margin-bottom: 0.8rem;
-    color: var(--text);
+    color: var(--text-title);
     font-size: clamp(2.2rem, 3.8vw, 3.2rem);
     font-weight: 700;
     line-height: 1.15;
@@ -73,7 +73,7 @@
     height: 48px;
     border-radius: 12px;
     background: var(--accent-light);
-    border: 1px solid rgba(15, 118, 110, 0.15);
+    border: 1px solid rgba(154, 106, 122, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,9 +83,9 @@
 }
 
 .contact-item:hover .contact-item-icon {
-    background: var(--accent);
+    background: var(--btn-bg);
     color: #ffffff;
-    border-color: var(--accent);
+    border-color: var(--btn-bg);
     transform: scale(1.05);
 }
 
@@ -107,7 +107,7 @@
 }
 
 .contact-value {
-    color: var(--text);
+    color: var(--text-title);
     font-size: 0.94rem;
     font-weight: 600;
     transition: color 0.2s ease;

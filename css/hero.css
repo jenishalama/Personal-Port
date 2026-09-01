@@ -8,8 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: radial-gradient(circle at 10% 20%, rgba(15, 118, 110, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 45%),
+    background: radial-gradient(circle at 10% 20%, rgba(154, 106, 122, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(197, 140, 155, 0.07) 0%, transparent 45%),
                 var(--bg);
     position: relative;
     overflow: hidden;
@@ -61,7 +61,7 @@
     font-weight: 700;
     line-height: 1.08;
     letter-spacing: -1px;
-    color: var(--text);
+    color: var(--text-title);
     margin-bottom: 0.6rem;
 }
 
@@ -114,7 +114,7 @@
     color: var(--accent);
     background: var(--accent-light);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+    box-shadow: 0 4px 12px rgba(154, 106, 122, 0.15);
 }
 
 /* ── Actions: Buttons & Socials ── */
@@ -136,8 +136,8 @@
     align-items: center;
     gap: 0.4rem;
     padding: 0.85rem 1.85rem;
-    background: var(--grad-accent);
-    color: #ffffff;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     font-family: "Inter", sans-serif;
     font-size: 0.88rem;
     font-weight: 600;
@@ -145,14 +145,15 @@
     text-decoration: none;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(15, 118, 110, 0.28);
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, opacity 0.25s ease;
+    box-shadow: 0 4px 16px rgba(59, 36, 52, 0.22);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.25s ease, opacity 0.25s ease;
 }
 
 .primary-btn:hover {
+    background: var(--btn-hover);
     transform: translateY(-2.5px);
-    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.38);
-    opacity: 0.95;
+    box-shadow: 0 8px 24px rgba(138, 89, 107, 0.32);
+    opacity: 0.98;
 }
 
 .secondary-btn {
@@ -160,7 +161,7 @@
     align-items: center;
     padding: 0.85rem 1.85rem;
     background: var(--surface);
-    color: var(--text);
+    color: var(--text-title);
     font-family: "Inter", sans-serif;
     font-size: 0.88rem;
     font-weight: 600;
@@ -205,7 +206,7 @@
     color: var(--accent);
     background: var(--accent-light);
     transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(15, 118, 110, 0.15);
+    box-shadow: 0 6px 16px rgba(154, 106, 122, 0.18);
 }
 
 /* ── Profile Image Presentation ── */
@@ -224,7 +225,7 @@
     height: 100%;
     border-radius: var(--radius-lg);
     background: var(--grad-accent);
-    opacity: 0.12;
+    opacity: 0.15;
     transform: rotate(-3deg) scale(1.03);
     z-index: 0;
     transition: transform 0.4s ease;
@@ -249,7 +250,7 @@
 
 .hero-image-frame:hover {
     transform: translateY(-5px);
-    box-shadow: 0 25px 45px -5px rgba(15, 23, 42, 0.14);
+    box-shadow: 0 25px 45px -5px rgba(59, 36, 52, 0.14);
 }
 
 .hero-img {

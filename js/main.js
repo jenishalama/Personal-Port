@@ -108,7 +108,7 @@
         width: 260px;
         height: 260px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(79,158,255,0.09) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(154, 106, 122, 0.12) 0%, transparent 70%);
         pointer-events: none;
         transform: translate(-50%, -50%);
         transition: left 0.4s ease, top 0.4s ease;

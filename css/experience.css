@@ -24,7 +24,7 @@
 .experience-heading h2 {
     font-family: "Playfair Display", Georgia, serif;
     margin-top: 0.4rem;
-    color: var(--text);
+    color: var(--text-title);
     font-size: clamp(2.2rem, 3.8vw, 3.2rem);
     font-weight: 700;
     line-height: 1.15;
@@ -104,7 +104,7 @@
     padding: 0.28rem 0.65rem;
     background: var(--accent-light);
     color: var(--accent);
-    border: 1px solid rgba(15, 118, 110, 0.15);
+    border: 1px solid rgba(154, 106, 122, 0.2);
     border-radius: 6px;
     width: fit-content;
     font-weight: 600;
@@ -113,7 +113,7 @@
 .exp-company {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--text);
+    color: var(--text-title);
     margin-top: 0.2rem;
     letter-spacing: -0.2px;
 }
@@ -134,7 +134,7 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: 1.45rem;
     font-weight: 700;
-    color: var(--text);
+    color: var(--text-title);
     letter-spacing: -0.3px;
 }
 
@@ -154,7 +154,7 @@
 
 .exp-highlights li {
     font-size: 0.9rem;
-    color: var(--text-sub);
+    color: var(--text);
     position: relative;
     padding-left: 1.3rem;
     line-height: 1.65;
