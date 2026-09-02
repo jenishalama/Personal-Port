@@ -1,10 +1,6 @@
-/* ===============================================
-   HERO — Elegant, Modern & Visually Rich
-   =============================================== */
-
 .hero {
     min-height: 100vh;
-    padding: 130px 8% 80px;
+    padding: 120px 8% 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,10 +53,10 @@
 
 .hero-title {
     font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(2.8rem, 5.2vw, 4.4rem);
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
     font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -1px;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
     color: var(--text-title);
     margin-bottom: 0.6rem;
 }
@@ -74,10 +70,10 @@
 
 .hero-subtitle {
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     font-weight: 500;
     color: var(--text-sub);
-    margin-bottom: 1.3rem;
+    margin-bottom: 1.2rem;
     letter-spacing: -0.2px;
 }
 

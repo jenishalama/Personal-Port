@@ -16,19 +16,21 @@
 
 /* ── Heading ── */
 .experience-heading {
-    margin-bottom: 3.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.2rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
 }
 
 .experience-heading h2 {
     font-family: "Playfair Display", Georgia, serif;
     margin-top: 0.4rem;
     color: var(--text-title);
-    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
 }
 
 .experience-intro {
@@ -205,6 +207,6 @@
 
 @media (max-width: 600px) {
     .experience {
-        padding: 85px 6%;
+        padding: 55px 6%;
     }
 }

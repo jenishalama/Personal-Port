@@ -12,9 +12,7 @@
 
 /* ── Heading ── */
 .projects-heading {
-    margin-bottom: 3.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.2rem;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -22,15 +20,22 @@
     flex-wrap: wrap;
 }
 
+.projects-heading-text {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+}
+
 .projects-heading-text h2 {
     font-family: "Playfair Display", Georgia, serif;
     margin-top: 0.4rem;
     margin-bottom: 0.6rem;
     color: var(--text-title);
-    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.5px;
+    line-height: 1.2;
+    letter-spacing: -0.4px;
 }
 
 .projects-intro {
@@ -213,7 +218,7 @@
 }
 
 @media (max-width: 600px) {
-    .projects { padding: 85px 6%; }
+    .projects { padding: 55px 6%; }
     .projects-list { grid-template-columns: 1fr; gap: 1.2rem; }
     .project-card { padding: 1.8rem; }
 }
