@@ -30,7 +30,8 @@
     letter-spacing: -0.4px;
 }
 
-.contact-heading-text>p {
+.contact-intro,
+.contact-heading-text > p:not(.section-label) {
     max-width: 520px;
     color: var(--text-sub);
     font-size: 0.98rem;

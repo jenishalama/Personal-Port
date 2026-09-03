@@ -33,7 +33,7 @@
 .about-content {
     display: grid;
     grid-template-columns: 1.35fr 0.95fr;
-    gap: 3.5rem;
+    gap: 5rem;
     align-items: center;
 }
 
@@ -47,7 +47,7 @@
     color: var(--text);
     font-size: 1.05rem;
     line-height: 1.85;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: 400;
 }
 
@@ -75,7 +75,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 2.2rem 2.4rem;
+    padding: 1rem 2rem;
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                 border-color 0.3s ease, 
