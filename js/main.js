@@ -1,8 +1,3 @@
-/* ===============================================
-   MAIN JS — Jenisha Lama Portfolio
-   =============================================== */
-
-/* ── 1. Navbar: scroll-aware bg + hamburger + active link ── */
 (function () {
     const navbar    = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger');
@@ -46,10 +41,44 @@
         if (e.key === 'Escape' && isOpen()) closeMenu();
     });
 
-    /* ---------- close on nav link click ---------- */
+    /* ---------- click handling with smooth scroll & immediate feedback ---------- */
+    let isClickScrolling = false;
+    let clickScrollTimer = null;
+
     allLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
             if (isOpen()) closeMenu();
+
+            if (href && href.startsWith('#')) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    isClickScrolling = true;
+                    clearTimeout(clickScrollTimer);
+
+                    // Immediately show active state on clicked link
+                    navOnlyLinks.forEach(l => l.classList.toggle('active', l === link));
+
+                    const navHeight = navbar ? navbar.offsetHeight : 70;
+                    const targetTop = href === '#home' ? 0 : (target.offsetTop - navHeight + 8);
+
+                    window.scrollTo({
+                        top: targetTop,
+                        behavior: 'smooth'
+                    });
+
+                    if (history.pushState) {
+                        history.pushState(null, null, href);
+                    }
+
+                    // Release lock after smooth scroll animation completes
+                    clickScrollTimer = setTimeout(() => {
+                        isClickScrolling = false;
+                        highlightActiveLink();
+                    }, 800);
+                }
+            }
         });
     });
 
@@ -60,12 +89,28 @@
     }, { passive: true });
 
     function highlightActiveLink () {
+        if (isClickScrolling) return;
+
         let current = '';
-        sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - 130) {
-                current = section.getAttribute('id');
-            }
-        });
+        const scrollPosition = window.scrollY;
+        const scrollBottom = window.innerHeight + scrollPosition;
+        const pageHeight = document.documentElement.scrollHeight;
+
+        // If user is at or near the bottom of page, highlight the last section (Contact)
+        if (scrollBottom >= pageHeight - 80 && sections.length > 0) {
+            current = sections[sections.length - 1].getAttribute('id');
+        } else {
+            sections.forEach(section => {
+                if (scrollPosition >= section.offsetTop - 140) {
+                    current = section.getAttribute('id');
+                }
+            });
+        }
+
+        if (!current && sections.length > 0) {
+            current = sections[0].getAttribute('id');
+        }
+
         navOnlyLinks.forEach(link => {
             link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
         });

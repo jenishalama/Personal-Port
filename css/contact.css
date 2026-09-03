@@ -1,11 +1,9 @@
-/* ===============================================
-   CONTACT SECTION — Elegant Box Cards
-   =============================================== */
 
 .contact {
     background: var(--bg-alt);
     min-height: auto;
     position: relative;
+    padding: 95px 8% 110px;
 }
 
 .contact-container {
