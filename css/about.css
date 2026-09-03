@@ -12,7 +12,7 @@
 
 /* ── Heading ── */
 .about-heading {
-    margin-bottom: 2.2rem;
+    margin-bottom: 2.5rem;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -20,117 +20,150 @@
 }
 
 .about-heading h2 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--text-title);
-    font-size: clamp(1.75rem, 2.6vw, 2.35rem);
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.4px;
-    margin-top: 0.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+    margin-top: 0.35rem;
 }
 
 /* ── Content Grid ── */
 .about-content {
     display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 4.5rem;
-    align-items: start;
-}
-
-.about-text p {
-    margin-bottom: 1.4rem;
-    color: var(--text);
-    font-size: 1rem;
-    line-height: 1.85;
-}
-
-.about-btn {
-    display: inline-flex;
+    grid-template-columns: 1.35fr 0.95fr;
+    gap: 3.5rem;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.8rem 1.6rem;
-    background: var(--btn-bg);
-    color: var(--btn-text);
-    border: 1px solid var(--btn-bg);
-    border-radius: var(--radius);
-    font-family: "Inter", sans-serif;
-    font-size: 0.86rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(59, 36, 52, 0.2);
-    transition: all 0.25s ease;
 }
 
-.about-btn:hover {
-    background: var(--btn-hover);
-    border-color: var(--btn-hover);
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(138, 89, 107, 0.3);
-}
-
-/* ── Highlights Column (Modern Cards) ── */
-.about-highlights {
+/* ── Left Column (Bio + Location) ── */
+.about-left {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-.highlight {
-    padding: 1.5rem 1.8rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    display: flex;
+.about-paragraph {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.about-paragraph strong {
+    color: var(--text-title);
+    font-weight: 600;
+}
+
+.about-location {
+    display: inline-flex;
     align-items: center;
-    gap: 1.2rem;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    gap: 0.6rem;
+    color: var(--text-sub);
+    font-size: 0.92rem;
+    font-weight: 500;
 }
 
-.highlight:hover {
-    border-color: var(--accent);
-    transform: translateX(4px);
-    box-shadow: var(--shadow);
-}
-
-.highlight-number {
-    font-family: "Inter", sans-serif;
-    background: var(--grad-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
+.about-location svg {
+    color: var(--accent);
     flex-shrink: 0;
 }
 
-.highlight-info {
+/* ── Right Column (Education Card) ── */
+.education-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.2rem 2.4rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.edu-tag {
     display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.25rem;
 }
 
-.highlight-title {
-    color: var(--text-title);
-    font-size: 0.95rem;
+.edu-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.edu-tag-title {
+    font-size: 0.74rem;
     font-weight: 700;
-    line-height: 1.3;
+    letter-spacing: 2px;
+    color: var(--text-sub);
+    text-transform: uppercase;
 }
 
-.highlight-desc {
+.edu-degree {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-title);
+    line-height: 1.35;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.2px;
+}
+
+.edu-institution {
+    font-size: 0.92rem;
     color: var(--text-sub);
-    font-size: 0.84rem;
     font-weight: 500;
-    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.edu-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--border);
+}
+
+.edu-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.edu-meta-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
 }
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
+@media (max-width: 960px) {
     .about-content {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
+    }
+
+    .education-card {
+        padding: 1.8rem 1.8rem;
     }
 }
 
@@ -138,8 +171,15 @@
     .about {
         padding: 55px 6%;
     }
-    
-    .highlight {
-        padding: 1.2rem 1.4rem;
+
+    .about-paragraph {
+        font-size: 0.98rem;
+        line-height: 1.75;
+    }
+
+    .edu-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
     }
 }
