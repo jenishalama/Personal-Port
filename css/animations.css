@@ -1,0 +1,392 @@
+/* ================================================================
+   ANIMATIONS.CSS  —  All motion magic for Jenisha Lama's portfolio
+   ================================================================ */
+
+/* ─────────────────────────────────────────────
+   1. PAGE LOAD — fade-up the entire body
+   ───────────────────────────────────────────── */
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    animation: pageFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. HERO — animated floating background blobs
+   ───────────────────────────────────────────── */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
+}
+
+.hero::before {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(154, 106, 122, 0.13), transparent 70%);
+    top: -80px;
+    left: -100px;
+    animation: blobDrift1 14s ease-in-out infinite alternate;
+}
+
+.hero::after {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(197, 140, 155, 0.10), transparent 70%);
+    bottom: 40px;
+    right: -60px;
+    animation: blobDrift2 18s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(40px, 30px) scale(1.06); }
+    66%  { transform: translate(-20px, 50px) scale(0.96); }
+    100% { transform: translate(30px, -20px) scale(1.04); }
+}
+
+@keyframes blobDrift2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-50px, -30px) scale(1.08); }
+    100% { transform: translate(20px, 40px) scale(0.94); }
+}
+
+
+/* ─────────────────────────────────────────────
+   3. HERO — typewriter cursor blink on subtitle
+   ───────────────────────────────────────────── */
+.hero-subtitle::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--accent);
+    animation: cursorBlink 1s step-end infinite;
+    font-weight: 300;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+
+/* ─────────────────────────────────────────────
+   4. HERO — floating status badge pop
+   ───────────────────────────────────────────── */
+.hero-badge {
+    animation: badgePop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+}
+
+@keyframes badgePop {
+    from { opacity: 0; transform: scale(0.85) translateY(-6px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   5. HERO — staggered hero content entrance
+   ───────────────────────────────────────────── */
+.hero-title        { animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.hero-description  { animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both; }
+.hero-tech-pills   { animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both; }
+.hero-actions      { animation: heroSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both; }
+.hero-image-wrapper{ animation: heroSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both; }
+
+@keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Override .reveal initial state for hero elements so they do not double-animate */
+.hero .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+
+
+/* ─────────────────────────────────────────────
+   6. HERO — tech pill stagger entrance
+   ───────────────────────────────────────────── */
+.tech-pill {
+    animation: pillPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.tech-pill:nth-child(1) { animation-delay: 0.42s; }
+.tech-pill:nth-child(2) { animation-delay: 0.50s; }
+.tech-pill:nth-child(3) { animation-delay: 0.58s; }
+.tech-pill:nth-child(4) { animation-delay: 0.66s; }
+.tech-pill:nth-child(5) { animation-delay: 0.74s; }
+.tech-pill:nth-child(6) { animation-delay: 0.82s; }
+
+@keyframes pillPop {
+    from { opacity: 0; transform: scale(0.8) translateY(8px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   7. SCROLL REVEAL — staggered card entrances
+   ───────────────────────────────────────────── */
+.stagger-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ─────────────────────────────────────────────
+   8. SKILL TAGS — shimmer on hover
+   ───────────────────────────────────────────── */
+.skill-list span {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-list span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.skill-list span:hover::before {
+    animation: shimmer 0.55s ease forwards;
+}
+
+@keyframes shimmer {
+    0%   { left: -75%; }
+    100% { left: 125%; }
+}
+
+
+/* ─────────────────────────────────────────────
+   9. PROJECT CARDS — shine overlay (driven by JS)
+   ───────────────────────────────────────────── */
+.project-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.project-card .card-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255,255,255,0.12) 0%,
+        transparent 55%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.project-card:hover .card-shine {
+    opacity: 1;
+}
+
+
+/* ─────────────────────────────────────────────
+   10. EXPERIENCE — left accent bar draw animation
+   ───────────────────────────────────────────── */
+.experience-card::before {
+    transform-origin: top center;
+    transform: scaleY(0);
+    opacity: 1 !important;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-card:hover::before {
+    transform: scaleY(1);
+}
+
+
+/* ─────────────────────────────────────────────
+   11. BUTTON — ripple effect on click
+   ───────────────────────────────────────────── */
+.primary-btn,
+.secondary-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: rippleOut 0.55s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleOut {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+
+/* ─────────────────────────────────────────────
+   12. NAV LOGO — slide in on load
+   ───────────────────────────────────────────── */
+.logo a {
+    animation: logoFadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+@keyframes logoFadeIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   13. CONTACT ITEMS — icon bounce on hover
+   ───────────────────────────────────────────── */
+.contact-item:hover .contact-item-icon {
+    animation: iconBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconBounce {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.18) rotate(-5deg); }
+    70%  { transform: scale(0.96) rotate(3deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+
+/* ─────────────────────────────────────────────
+   14. SECTION LABELS — slide in from left
+   ───────────────────────────────────────────── */
+.reveal.visible .section-label,
+.reveal-left.visible .section-label {
+    animation: labelSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+@keyframes labelSlideIn {
+    from { opacity: 0; transform: translateX(-14px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   15. HEADING LINE — width grow animation
+   ───────────────────────────────────────────── */
+.heading-line,
+.skills-heading-line {
+    width: 0;
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+}
+
+.reveal.visible .heading-line,
+.reveal.visible .skills-heading-line,
+.reveal-left.visible .heading-line {
+    width: 100%;
+}
+
+
+/* ─────────────────────────────────────────────
+   16. SKILL ICON BOX — rotate-in on card reveal
+   ───────────────────────────────────────────── */
+.stagger-child.visible .skill-icon-box {
+    animation: iconRotateIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+@keyframes iconRotateIn {
+    from { opacity: 0; transform: rotate(-20deg) scale(0.7); }
+    to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+
+/* ─────────────────────────────────────────────
+   17. HERO SOCIAL LINKS — stagger entrance
+   ───────────────────────────────────────────── */
+.hero-social-link {
+    animation: socialPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.hero-social-link:nth-child(1) { animation-delay: 0.65s; }
+.hero-social-link:nth-child(2) { animation-delay: 0.73s; }
+.hero-social-link:nth-child(3) { animation-delay: 0.81s; }
+
+@keyframes socialPop {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+
+/* ─────────────────────────────────────────────
+   18. FLOATING CHIP — spring entrance + float
+   ───────────────────────────────────────────── */
+.hero-floating-chip {
+    animation: chipSpring 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s both,
+               floatChip 4s ease-in-out 1.2s infinite;
+}
+
+@keyframes chipSpring {
+    from { opacity: 0; transform: scale(0.75) translateY(14px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   19. PROJECTS ALL-LINK — subtle pulse on load
+   ───────────────────────────────────────────── */
+.projects-all-link {
+    position: relative;
+}
+
+.projects-all-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(154, 106, 122, 0.4);
+    animation: linkPulse 2.8s ease-out 1s infinite;
+}
+
+@keyframes linkPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(154, 106, 122, 0.35); }
+    60%  { box-shadow: 0 0 0 8px rgba(154, 106, 122, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(154, 106, 122, 0); }
+}
+
+
+/* ─────────────────────────────────────────────
+   20. REDUCED MOTION — respect user preference
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
