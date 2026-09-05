@@ -1,14 +1,19 @@
+/* ==========================================================================
+   1. Enhanced Navbar & Section Navigation (Intersection Observer & Scroll Spy)
+   ========================================================================== */
 (function () {
-    const navbar    = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navMenu   = document.getElementById('nav-links');
-    const overlay   = document.getElementById('nav-overlay');
-    const sections  = document.querySelectorAll('section[id]');
-    const allLinks  = document.querySelectorAll('.nav-links a');
-    const navOnlyLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+    const navbar        = document.getElementById('navbar');
+    const hamburger     = document.getElementById('hamburger');
+    const navMenu       = document.getElementById('nav-links');
+    const overlay       = document.getElementById('nav-overlay');
+    const sections      = document.querySelectorAll('section[id]');
+    const navLinks      = document.querySelectorAll('.nav-links a');
+    const logoLink      = document.querySelector('.logo a');
 
-    /* ---------- helpers ---------- */
-    function openMenu () {
+    if (!navbar || !navMenu) return;
+
+    /* ── Mobile Menu State Helpers ── */
+    function openMenu() {
         hamburger.classList.add('active');
         navMenu.classList.add('open');
         overlay.classList.add('open');
@@ -16,7 +21,7 @@
         hamburger.setAttribute('aria-expanded', 'true');
     }
 
-    function closeMenu () {
+    function closeMenu() {
         hamburger.classList.remove('active');
         navMenu.classList.remove('open');
         overlay.classList.remove('open');
@@ -24,99 +29,192 @@
         hamburger.setAttribute('aria-expanded', 'false');
     }
 
-    function isOpen () {
+    function isMenuOpen() {
         return navMenu.classList.contains('open');
     }
 
-    /* ---------- hamburger click ---------- */
-    hamburger.addEventListener('click', () => {
-        isOpen() ? closeMenu() : openMenu();
-    });
+    /* ── Mobile Menu Toggle Listeners ── */
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            isMenuOpen() ? closeMenu() : openMenu();
+        });
+    }
 
-    /* ---------- overlay click closes menu ---------- */
-    overlay.addEventListener('click', closeMenu);
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
 
-    /* ---------- Escape key closes menu ---------- */
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isOpen()) closeMenu();
+        if (e.key === 'Escape' && isMenuOpen()) closeMenu();
     });
 
-    /* ---------- click handling with smooth scroll & immediate feedback ---------- */
-    let isClickScrolling = false;
-    let clickScrollTimer = null;
+    /* ── Active Navigation Highlighting ── */
+    let currentActiveId = null;
 
-    allLinks.forEach(link => {
+    /**
+     * Highlights exactly one active navigation link at a time
+     * and sets aria-current for accessibility.
+     */
+    function setActiveLink(sectionId) {
+        if (!sectionId || currentActiveId === sectionId) return;
+        currentActiveId = sectionId;
+
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const isActive = href === `#${sectionId}`;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    }
+
+    /* ── Smooth Scrolling Navigation with Programmatic Lock ── */
+    let isManualScrolling = false;
+    let manualScrollTimer = null;
+
+    function navigateToSection(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement && targetId !== 'home') return;
+
+        isManualScrolling = true;
+        clearTimeout(manualScrollTimer);
+
+        // Immediate visual feedback on clicked link
+        setActiveLink(targetId);
+
+        const navHeight = navbar ? navbar.offsetHeight : 70;
+        const targetTop = (targetId === 'home' || !targetElement)
+            ? 0
+            : Math.max(0, targetElement.offsetTop - navHeight + 4);
+
+        window.scrollTo({
+            top: targetTop,
+            behavior: 'smooth'
+        });
+
+        // Keep the URL clean — remove any hash fragment after scrolling
+        history.replaceState(null, '', window.location.pathname);
+
+        // Release scroll lock once smooth scroll animation completes
+        manualScrollTimer = setTimeout(() => {
+            isManualScrolling = false;
+            updateActiveSection();
+        }, 800);
+    }
+
+    // Attach smooth scroll click listeners to nav links
+    navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
-            if (isOpen()) closeMenu();
+            if (isMenuOpen()) closeMenu();
 
             if (href && href.startsWith('#')) {
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    isClickScrolling = true;
-                    clearTimeout(clickScrollTimer);
-
-                    // Immediately show active state on clicked link
-                    navOnlyLinks.forEach(l => l.classList.toggle('active', l === link));
-
-                    const navHeight = navbar ? navbar.offsetHeight : 70;
-                    const targetTop = href === '#home' ? 0 : (target.offsetTop - navHeight + 8);
-
-                    window.scrollTo({
-                        top: targetTop,
-                        behavior: 'smooth'
-                    });
-
-                    if (history.pushState) {
-                        history.pushState(null, null, href);
-                    }
-
-                    // Release lock after smooth scroll animation completes
-                    clickScrollTimer = setTimeout(() => {
-                        isClickScrolling = false;
-                        highlightActiveLink();
-                    }, 800);
-                }
+                e.preventDefault();
+                const targetId = href.slice(1);
+                navigateToSection(targetId);
             }
         });
     });
 
-    /* ---------- scroll: navbar bg + active link ---------- */
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 60);
-        highlightActiveLink();
-    }, { passive: true });
-
-    function highlightActiveLink () {
-        if (isClickScrolling) return;
-
-        let current = '';
-        const scrollPosition = window.scrollY;
-        const scrollBottom = window.innerHeight + scrollPosition;
-        const pageHeight = document.documentElement.scrollHeight;
-
-        // If user is at or near the bottom of page, highlight the last section (Contact)
-        if (scrollBottom >= pageHeight - 80 && sections.length > 0) {
-            current = sections[sections.length - 1].getAttribute('id');
-        } else {
-            sections.forEach(section => {
-                if (scrollPosition >= section.offsetTop - 140) {
-                    current = section.getAttribute('id');
-                }
-            });
-        }
-
-        if (!current && sections.length > 0) {
-            current = sections[0].getAttribute('id');
-        }
-
-        navOnlyLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    // Attach smooth scroll to logo link
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            const href = logoLink.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                if (isMenuOpen()) closeMenu();
+                navigateToSection('home');
+            }
         });
     }
 
-    highlightActiveLink();
+    // On page load: strip any existing hash from the URL (e.g., if user bookmarked #about)
+    if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+    }
+
+    /* ── Intersection Observer for Section Detection ── */
+    const visibleSections = new Map();
+
+    function updateActiveSection() {
+        if (isManualScrolling) return;
+
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        // Boundary 1: At or near top of the page -> Always highlight "Home"
+        if (scrollY < 90) {
+            setActiveLink('home');
+            return;
+        }
+
+        // Boundary 2: At or near bottom of the page -> Always highlight the last section ("Contact")
+        if (windowHeight + scrollY >= documentHeight - 60 && sections.length > 0) {
+            const lastSectionId = sections[sections.length - 1].getAttribute('id');
+            setActiveLink(lastSectionId);
+            return;
+        }
+
+        // General case: Determine which intersecting section has the largest visible area
+        let bestSectionId = null;
+        let maxVisibleHeight = -1;
+
+        visibleSections.forEach((entry, id) => {
+            const rect = entry.boundingClientRect;
+            const visibleTop = Math.max(0, rect.top);
+            const visibleBottom = Math.min(windowHeight, rect.bottom);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+            if (visibleHeight > maxVisibleHeight) {
+                maxVisibleHeight = visibleHeight;
+                bestSectionId = id;
+            }
+        });
+
+        if (bestSectionId) {
+            setActiveLink(bestSectionId);
+        }
+    }
+
+    if ('IntersectionObserver' in window && sections.length > 0) {
+        const observerOptions = {
+            root: null,
+            // Negative margins focus the detection on the active viewing zone
+            rootMargin: '-15% 0px -25% 0px',
+            threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0]
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.isIntersecting) {
+                    visibleSections.set(id, entry);
+                } else {
+                    visibleSections.delete(id);
+                }
+            });
+            updateActiveSection();
+        }, observerOptions);
+
+        sections.forEach(sec => sectionObserver.observe(sec));
+    }
+
+    /* ── Scroll Event: Navbar Glassmorphism & Boundary Checks ── */
+    window.addEventListener('scroll', () => {
+        // Toggle frosted glass effect when scrolled down (> 30px)
+        navbar.classList.toggle('scrolled', window.scrollY > 30);
+
+        // Update active link during scroll (especially near edges)
+        updateActiveSection();
+    }, { passive: true });
+
+    // Initial check on page load
+    navbar.classList.toggle('scrolled', window.scrollY > 30);
+    updateActiveSection();
 })();
 
 
